@@ -110,7 +110,7 @@ the query string. The limit allows you to ask the API to return more than it's
 default amount.
 
 Remember, query strings are parameters passed in the URL after a question mark
-and separated with ampersands. They look like this:
+and separated with ampersands. They look like this (mapwebsite.com is just an unrelated example):
 
 ```
 http://mapwebsite.com/?lat=40.284&long=110.133&zoom=12
