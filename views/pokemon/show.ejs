@@ -1,0 +1,9 @@
+<div class="container">
+  <div class="well">
+    <h2><%= pokemon.name %> </h2>
+    <p>Height: <%= Math.round(pokemon.height / 10 * 3.01) %> feet</p>
+    <p>Weight: <%= Math.round(pokemon.weight / 4.536) %> lbs</p>
+    <p>Types: <%= pokemon.types.map((typeObj) => typeObj.type.name).join(', ') %></p>
+    <img src="<%= pokemon.sprites.other["official-artwork"].front_default %>" alt="Image of <%= pokemon.name %>">
+  </div>
+</div>

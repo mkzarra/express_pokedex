@@ -1,0 +1,14 @@
+<div class="container">
+  <% pokemon.forEach((pkmn) => { %>
+    <div class="well">
+      <h2>
+        <a href="/pokemon/<%= pkmn.name %>"><%= pkmn.name %></a>
+
+        <form action="/pokemon/<%= pkmn.name %>?_method=DELETE" method="POST">
+          <input class="btn-danger" type="submit" value="Remove from favs" >
+        </form>
+        <!-- method override, form w/ method = post overriden to delete, hidden input w/ name (or put name in the url), set up a delete route, takes in the name, find and delete, redirect cuz this is a non-get route -->
+      </h2>
+    </div>
+  <% }) %>
+</div>

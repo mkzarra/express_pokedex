@@ -9,10 +9,13 @@ app.use(require('morgan')('dev'));
 app.set('view engine', 'ejs');
 app.use(express.urlencoded({ extended: false }));
 app.use(ejsLayouts);
+const methodOverride = require('method-override')
+app.use(methodOverride('_method'))
+app.use(express.static(__dirname + '/public'))
 
 // GET - main index of site
 app.get('/', function(req, res) {
-  let pokemonUrl = 'http://pokeapi.co/api/v2/pokemon/';
+  let pokemonUrl = 'http://pokeapi.co/api/v2/pokemon?limit=150';
   // Use request to call the API
   axios.get(pokemonUrl).then(response => {
     let pokemon = response.data.results;
@@ -22,6 +25,12 @@ app.get('/', function(req, res) {
 
 // Imports all routes from the pokemon routes file
 app.use('/pokemon', require('./routes/pokemon'));
+
+// you could use this to serve your css files to the client
+// but serving static files does this better!
+// app.get('css/style.css', (req, res) => {
+//   res.sendFile(fs.readFileSync(__dirname))
+// })
 
 const server = app.listen(port, () => {
   console.log(`Server is running on ${port}`);
